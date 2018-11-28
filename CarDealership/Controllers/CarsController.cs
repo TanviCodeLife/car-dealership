@@ -33,7 +33,7 @@ namespace CarDealership.Controllers
       return View();
     }
 
-    [HttpGet("/items/{id}")]
+    [HttpGet("/cars/{id}")]
     public ActionResult Show(int id)
     {
       Car car = Car.Find(id);
