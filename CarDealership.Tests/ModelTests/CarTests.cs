@@ -142,9 +142,7 @@ namespace CarDealership.Tests
         }
       }
 
-      Car.ClearAll();
-      // Car resultCar = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
-      List<Car> resultCarList = new List<Car> {resultCar};
+      List<Car> resultCarList = new List<Car> {newCar1};
 
       // Assert
       foreach(Car car in CarsMatchingSearch)
