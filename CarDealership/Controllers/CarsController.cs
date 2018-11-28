@@ -13,8 +13,8 @@ namespace CarDealership.Controllers
       return View(allCars);
     }
 
-    [Route("/cars/new")]
-    public ActionResult CreateForm()
+    [HttpGet("/cars/new")]
+    public ActionResult New()
     {
       return View();
     }
@@ -31,6 +31,13 @@ namespace CarDealership.Controllers
     {
       Car.ClearAll();
       return View();
+    }
+
+    [HttpGet("/items/{id}")]
+    public ActionResult Show(int id)
+    {
+      Car car = Car.Find(id);
+      return View(car);
     }
 
   }

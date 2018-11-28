@@ -90,6 +90,29 @@ namespace CarDealership.Tests
       CollectionAssert.AreEqual(newCarList, resultCarList);
     }
 
+    [TestMethod]
+    public void Find_ReturnsCorrectItem_Car()
+    {
+      //Arrange
+      string inputModel01 = "Camry";
+      string inputModel02 = "Accord";
+      int inputPrice01 = 50000;
+      int inputPrice02 = 100000;
+      int inputMiles01 = 90000;
+      int inputMiles02 = 100000;
+      string inputNote01 = "white color with leather interior";
+      string inputNote02 = "black color";
+      Car newCar1 = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
+      Car newCar2 = new Car(inputModel02, inputPrice02, inputMiles02, inputNote02);
+
+      //Act
+      Car result = Car.Find(2);
+
+      //Assert
+      Assert.AreEqual(newCar2, result);
+    }
+
+
     // [TestMethod]
     // public void WorthBuying_ReturnsTrueOrFalseForEnteredSpecs_List()
     // {

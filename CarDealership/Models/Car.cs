@@ -9,6 +9,7 @@ namespace CarDealership.Models {
     private int _price;
     private int _miles;
     private string _note;
+    private int _id;
     private static List<Car> _instances = new List<Car> {};
 
     public Car(string makeModel, int price, int miles, string note)
@@ -18,6 +19,7 @@ namespace CarDealership.Models {
       _miles = miles;
       _note = note;
       _instances.Add(this);
+      _id = _instances.Count;
     }
 
 
@@ -61,11 +63,21 @@ namespace CarDealership.Models {
       _note = newNote;
     }
 
+    public int GetId()
+    {
+      return _id;
+    }
+
+    public static Car Find(int searchId)
+    {
+      return _instances[searchId-1];
+    }
+
     public static List<Car> GetAll()
     {
       return _instances;
     }
-    
+
     public static void ClearAll()
     {
       _instances.Clear();

@@ -1,0 +1,11 @@
+@using CarDealership.Models;
+
+<h1>Car Details: </h1>
+
+<h2>@Model.GetMakeModel()</h2>
+<h2>@Model.GetPrice()</h2>
+<h2>@Model.GetMiles()</h2>
+<h2>@Model.GetNote()</h2>
+
+<a href='/cars/new'>Add another car</a>
+<a href='/cars'>View all cars</a>

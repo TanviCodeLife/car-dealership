@@ -3,25 +3,26 @@
 <h1>Car Dealership</h1>
 <ul>
 
-@if (Model.Count == 0)
-{
-<p>You have no cars in your list</p>
-}
-@if (Model.Count != 0)
-{
-@foreach (Car car in Model)
-{
-<li>@car.GetMakeModel()</li>
-<li>@car.GetPrice()</li>
-<li>@car.GetMiles()</li>
-<li>@car.GetNote()</li>
-<p>--------------</p>
-}
-}
+  @if (Model.Count == 0)
+  {
+    <p>You have no cars in your list</p>
+  }
+  @if (Model.Count != 0)
+  {
+    @foreach (Car car in Model)
+    {
 
-</ul>
-<a href="/cars/new">Add a new item.</a>
+        <li><a href="/cars/@car.GetId()">@car.GetMakeModel()</li>
+        <li>@car.GetPrice()</li>
+        <li>@car.GetMiles()</li>
+        <li>@car.GetNote()</li>
+        <p>--------------</p>
+      }
+    }
 
-<form action="/cars/delete" method="post">
-<button type="submit" name="button">Clear All Cars</button>
-</form>
+  </ul>
+  <a href="/cars/new">Add a new item.</a>
+
+  <form action="/cars/delete" method="post">
+    <button type="submit" name="button">Clear All Cars</button>
+  </form>
