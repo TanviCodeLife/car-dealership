@@ -20,10 +20,6 @@ namespace CarDealership.Models {
       _instances.Add(this);
     }
 
-    public static List<Car> GetAll()
-    {
-      return _instances;
-    }
 
     public string GetMakeModel()
     {
@@ -63,6 +59,16 @@ namespace CarDealership.Models {
     public void SetNote(string newNote)
     {
       _note = newNote;
+    }
+
+    public static List<Car> GetAll()
+    {
+      return _instances;
+    }
+    
+    public static void ClearAll()
+    {
+      _instances.Clear();
     }
 
     public bool WorthBuying(int maxPrice, int maxMiles)

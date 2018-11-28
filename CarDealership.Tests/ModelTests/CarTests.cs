@@ -6,8 +6,13 @@ using System;
 namespace CarDealership.Tests
 {
   [TestClass]
-  public class CarTest
+  public class CarTest : IDisposable
   {
+
+    public void Dispose()
+    {
+      Car.ClearAll();
+    }
 
     [TestMethod]
     public void CarConstructor_CreatesInstanceOfCar_Car()
@@ -49,50 +54,41 @@ namespace CarDealership.Tests
       Assert.AreEqual("Accord", resultModel);
     }
 
-    // [TestMethod]
-    // public void GetAll_ReturnsEmptyList_CarList()
-    // {
-    //   // Arrange
-    //   List<Car> newList = new List<Car> {};
-    //
-    //   // Act
-    //   List<Car> result = Car.GetAll();
-    //   foreach (Car car in result)
-    //   {
-    //     Console.WriteLine("Output from empty list GetAll test: " + this.GetMakeModel());
-    //   }
-    //
-    //   // Assert
-    //   CollectionAssert.AreEqual(newList, result);
-    // }
-    //
-    // [TestMethod]
-    // public void GetAll_ReturnsCars_CarList()
-    // {
-    //   //Arrange
-    //   string inputModel01 = "Camry";
-    //   string inputModel02 = "Accord";
-    //   int inputPrice01 = 50000;
-    //   int inputPrice02 = 100000;
-    //   int inputMiles01 = 90000;
-    //   int inputMiles02 = 100000;
-    //   string inputNote01 = "white color with leather interior";
-    //   string inputNote02 = "black color";
-    //   Car newCar1 = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
-    //   Car newCar2 = new Car(inputModel02, inputPrice02, inputMiles02, inputNote02);
-    //   List<Car> newCarList = new List<Car> { newCar1, newCar2 };
-    //
-    //   //Act
-    //   List<Car> resultCarList = Car.GetAll();
-    //
-    //   foreach (Car car in result)
-    //   {
-    //     Console.WriteLine("Output from second GetAll test: " + thisCar.GetDescription());
-    //   }
-    //
-    //   //Assert
-    //   CollectionAssert.AreEqual(newCarList, resultCarList);
-    // }
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_CarList()
+    {
+      // Arrange
+      List<Car> newList = new List<Car> { };
+
+      // Act
+      List<Car> result = Car.GetAll();
+
+      // Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsCars_CarList()
+    {
+      //Arrange
+      string inputModel01 = "Camry";
+      string inputModel02 = "Accord";
+      int inputPrice01 = 50000;
+      int inputPrice02 = 100000;
+      int inputMiles01 = 90000;
+      int inputMiles02 = 100000;
+      string inputNote01 = "white color with leather interior";
+      string inputNote02 = "black color";
+      Car newCar1 = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
+      Car newCar2 = new Car(inputModel02, inputPrice02, inputMiles02, inputNote02);
+      List<Car> newCarList = new List<Car> { newCar1, newCar2 };
+
+      //Act
+      List<Car> resultCarList = Car.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(newCarList, resultCarList);
+    }
 
     // [TestMethod]
     // public void WorthBuying_ReturnsTrueOrFalseForEnteredSpecs_List()
@@ -123,14 +119,14 @@ namespace CarDealership.Tests
     //     }
     //   }
     //
-    //   if(CarsMatchingSearch.Count == 0)
-    //   {
-    //     Console.WriteLine("There is no cars matching you criteria.");
-    //   }
     //   Car resultCar = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
     //   List<Car> resultCarList = new List<Car> {resultCar};
     //
     //   // Assert
+    //   foreach(Car item in CarsMatchingSearch)
+    // {
+    //   Console.WriteLine("car: " + this.GetMakeModel());
+    // }
     //   CollectionAssert.AreEqual(CarsMatchingSearch, resultCarList);
     // }
 
