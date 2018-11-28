@@ -113,45 +113,54 @@ namespace CarDealership.Tests
     }
 
 
-    // [TestMethod]
-    // public void WorthBuying_ReturnsTrueOrFalseForEnteredSpecs_List()
-    // {
-    //   // Arrange
-    //   string inputModel01 = "Camry";
-    //   string inputModel02 = "Accord";
-    //   int inputPrice01 = 50000;
-    //   int inputPrice02 = 100000;
-    //   int inputMiles01 = 90000;
-    //   int inputMiles02 = 100000;
-    //   string inputNote01 = "white color with leather interior";
-    //   string inputNote02 = "black color";
-    //   Car newCar1 = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
-    //   Car newCar2 = new Car(inputModel02, inputPrice02, inputMiles02, inputNote02);
-    //   List<Car> newCarList = new List<Car> {newCar1, newCar2};
-    //
-    //   // Act
-    //   int maxPrice = 60000;
-    //   int maxMiles = 95000;
-    //   List<Car> CarsMatchingSearch = new List<Car>{};
-    //
-    //   foreach (Car automobile in newCarList)
-    //   {
-    //     if (automobile.WorthBuying(maxPrice, maxMiles))
-    //     {
-    //       CarsMatchingSearch.Add(automobile);
-    //     }
-    //   }
-    //
-    //   Car resultCar = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
-    //   List<Car> resultCarList = new List<Car> {resultCar};
-    //
-    //   // Assert
-    //   foreach(Car item in CarsMatchingSearch)
-    // {
-    //   Console.WriteLine("car: " + this.GetMakeModel());
-    // }
-    //   CollectionAssert.AreEqual(CarsMatchingSearch, resultCarList);
-    // }
+    [TestMethod]
+    public void WorthBuying_ReturnsListOfCarsInCriteria_List()
+    {
+      // Arrange
+      string inputModel01 = "Camry";
+      string inputModel02 = "Accord";
+      int inputPrice01 = 50000;
+      int inputPrice02 = 100000;
+      int inputMiles01 = 90000;
+      int inputMiles02 = 100000;
+      string inputNote01 = "white color with leather interior";
+      string inputNote02 = "black color";
+      Car newCar1 = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
+      Car newCar2 = new Car(inputModel02, inputPrice02, inputMiles02, inputNote02);
+      List<Car> newCarList = new List<Car> {newCar1, newCar2};
+
+      // Act
+      int maxPrice = 60000;
+      int maxMiles = 95000;
+      List<Car> CarsMatchingSearch = new List<Car>{};
+
+      foreach (Car automobile in newCarList)
+      {
+        if (automobile.WorthBuying(maxPrice, maxMiles))
+        {
+          CarsMatchingSearch.Add(automobile);
+        }
+      }
+
+      Car.ClearAll();
+      // Car resultCar = new Car(inputModel01, inputPrice01, inputMiles01, inputNote01);
+      List<Car> resultCarList = new List<Car> {resultCar};
+
+      // Assert
+      foreach(Car car in CarsMatchingSearch)
+      {
+        Console.WriteLine("car: " + car.GetMakeModel());
+        Console.WriteLine("car: " + car.GetPrice());
+        Console.WriteLine("car: " + car.GetId());
+      }
+      foreach(Car car in resultCarList)
+      {
+        Console.WriteLine("car: " + car.GetMakeModel());
+        Console.WriteLine("car: " + car.GetPrice());
+        Console.WriteLine("car: " + car.GetId());
+      }
+      CollectionAssert.AreEqual(CarsMatchingSearch, resultCarList);
+    }
 
 
   }
